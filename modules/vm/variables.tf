@@ -12,3 +12,7 @@ variable "resource_group" {
 variable "subnet_id" {
 
 }
+
+variable "ip_forwarding" {
+  default = false
+}

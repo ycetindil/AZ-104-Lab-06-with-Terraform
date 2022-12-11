@@ -1,4 +1,3 @@
-
 module "vm2" {
   source = "./modules/vm"
   vm_name = "az104-06-vm2"
@@ -18,6 +17,7 @@ module "vm0" {
   vm_name = "az104-06-vm0"
   subnet_id = azurerm_subnet.vnet1_subnet0.id
   resource_group = module.rg1.rg_name
+  ip_forwarding = true
 }
 
 module "vm1" {
