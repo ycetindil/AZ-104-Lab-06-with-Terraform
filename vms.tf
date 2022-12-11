@@ -5,6 +5,7 @@ module "vm2" {
   resource_group = module.rg1.rg_name
 }
 
+
 module "vm3" {
   source = "./modules/vm"
   vm_name = "az104-06-vm3"
