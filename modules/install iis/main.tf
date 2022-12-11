@@ -1,5 +1,5 @@
-resource "azurerm_virtual_machine_extension" "vm01-extensions" {
-  name                 = "${var.vm_id}-ext-webserver"
+resource "azurerm_virtual_machine_extension" "vm-extensions" {
+  name                 = "vm-ext-webserver"
   virtual_machine_id   = var.vm_id
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
@@ -10,9 +10,7 @@ resource "azurerm_virtual_machine_extension" "vm01-extensions" {
         "commandToExecute": "powershell Add-WindowsFeature Web-Server"
     }
 SETTINGS
-
 }
-
 
 variable "vm_id" {
   }

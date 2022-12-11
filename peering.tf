@@ -10,6 +10,7 @@ resource "azurerm_virtual_network_peering" "peer2to1" {
   resource_group_name       = module.rg1.rg_name
   virtual_network_name      = module.vnet2.vnet_name
   remote_virtual_network_id = azurerm_virtual_network.vnet1.id
+  allow_forwarded_traffic = true
 }
 
 resource "azurerm_virtual_network_peering" "peer1to3" {
@@ -24,4 +25,5 @@ resource "azurerm_virtual_network_peering" "peer3to1" {
   resource_group_name       = module.rg1.rg_name
   virtual_network_name      = module.vnet3.vnet_name
   remote_virtual_network_id = azurerm_virtual_network.vnet1.id
+  allow_forwarded_traffic = true
 }
