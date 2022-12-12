@@ -19,6 +19,13 @@ resource "azurerm_subnet" "vnet1_subnet1" {
   address_prefixes     = ["10.60.1.0/24"]
 }
 
+resource "azurerm_subnet" "vnet1_subnetappgw" {
+  name                 = "vnet1_subnetappgw"
+  resource_group_name  =  module.rg1.rg_name
+  virtual_network_name = azurerm_virtual_network.vnet1.name
+  address_prefixes     = ["10.60.3.224/27"]
+}
+
 module "vnet2" {
   source = "./modules/vnet"
   vnet_name = "az104-06-vnet2"
