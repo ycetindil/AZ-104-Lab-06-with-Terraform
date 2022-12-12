@@ -20,8 +20,8 @@ resource "azurerm_application_gateway" "network" {
   }
 
   gateway_ip_configuration {
-    name      = "my-gateway-ip-configuration"
-    subnet_id = azurerm_subnet.vnet1_subnetappgw.id
+    name      = "my-gateway-ip-configuration"  
+    subnet_id = module.subnet_appgw.subnet_id
   }
 
   frontend_port {
@@ -31,7 +31,7 @@ resource "azurerm_application_gateway" "network" {
 
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
-    public_ip_address_id = azurerm_public_ip.pip5.id
+    public_ip_address_id = module.pip5.pip_id
   }
 
   backend_address_pool {

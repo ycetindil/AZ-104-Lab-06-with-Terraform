@@ -1,15 +1,11 @@
-resource "azurerm_public_ip" "pip4" {
-  name                = "az104-06-pip4"
-  resource_group_name = module.rg1.rg_name
-  location            = var.location
-  allocation_method   = "Static"
-  sku = "Standard"
+module "pip4" {
+  source = "./modules/pip"
+  pip_name = "az104-06-pip4"
+  rg_name = module.rg4.rg_name
 }
 
-resource "azurerm_public_ip" "pip5" {
-  name                = "az104-06-pip5"
-  resource_group_name = module.rg1.rg_name
-  location            = var.location
-  allocation_method   = "Static"
-  sku = "Standard"
-}
+module "pip5" {
+  source = "./modules/pip"
+  pip_name = "az104-06-pip5"
+  rg_name = module.rg5.rg_name
+  }
