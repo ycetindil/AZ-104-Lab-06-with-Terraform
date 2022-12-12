@@ -5,25 +5,27 @@ resource "azurerm_virtual_network" "vnet1" {
   address_space       = ["10.60.0.0/22"]
 }
 
-resource "azurerm_subnet" "vnet1_subnet0" {
-  name                 = "vnet1_subnet0"
-  resource_group_name  =  module.rg1.rg_name
-  virtual_network_name = azurerm_virtual_network.vnet1.name
-  address_prefixes     = ["10.60.0.0/24"]
+module "subnet0" {
+  source = "./modules/subnet"
+  subnet_name = "Subnet0"
+  subnet_address = ["10.60.0.0/24"]
+  rg_name = module.rg1.rg_name  
+  vnet_name = azurerm_virtual_network.vnet1.name
+}
+module "subnet1" {
+  source = "./modules/subnet"
+  subnet_name = "Subnet1"
+  subnet_address = ["10.60.1.0/24"]
+  rg_name = module.rg1.rg_name  
+  vnet_name = azurerm_virtual_network.vnet1.name
 }
 
-resource "azurerm_subnet" "vnet1_subnet1" {
-  name                 = "vnet1_subnet1"
-  resource_group_name  =  module.rg1.rg_name
-  virtual_network_name = azurerm_virtual_network.vnet1.name
-  address_prefixes     = ["10.60.1.0/24"]
-}
-
-resource "azurerm_subnet" "vnet1_subnetappgw" {
-  name                 = "vnet1_subnetappgw"
-  resource_group_name  =  module.rg1.rg_name
-  virtual_network_name = azurerm_virtual_network.vnet1.name
-  address_prefixes     = ["10.60.3.224/27"]
+module "subnet_appgw" {
+  source = "./modules/subnet"
+  subnet_name = "Subnet-appgw"
+  subnet_address = ["10.60.3.224/27"]
+  rg_name = module.rg1.rg_name  
+  vnet_name = azurerm_virtual_network.vnet1.name
 }
 
 module "vnet2" {
