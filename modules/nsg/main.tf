@@ -27,3 +27,11 @@ resource "azurerm_network_security_group" "nsg" {
     destination_address_prefix = "*"
   }
 }
+
+data "azurerm_network_security_group" "nsg" {
+  name = var.nsg_name
+  resource_group_name = var.rg_name
+  depends_on = [
+    azurerm_network_security_group.nsg
+  ]
+}

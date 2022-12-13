@@ -11,6 +11,15 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
+data "azurerm_network_interface" "nic" {
+  name = "${var.vm_name}-nic"
+  resource_group_name = var.resource_group
+  depends_on = [
+    azurerm_network_interface.nic
+  ]
+  
+}
+
 resource "azurerm_windows_virtual_machine" "vm" {
   name                = var.vm_name
   resource_group_name = var.resource_group
@@ -33,4 +42,12 @@ resource "azurerm_windows_virtual_machine" "vm" {
     sku       = "2019-Datacenter"
     version   = "latest"
   }
+}
+
+data "azurerm_virtual_machine" "vm" {
+  name = var.vm_name
+  resource_group_name = var.resource_group
+  depends_on = [
+    azurerm_windows_virtual_machine.vm
+  ]
 }
