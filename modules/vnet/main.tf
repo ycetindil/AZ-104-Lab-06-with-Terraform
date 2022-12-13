@@ -5,9 +5,27 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = var.address_space
 }
 
-resource "azurerm_subnet" "subnet0" {
+data "azurerm_virtual_network" "vnet" {
+  name = var.vnet_name
+  resource_group_name = var.rg_name
+  depends_on = [
+    azurerm_virtual_network.vnet
+  ]
+  
+}
+
+resource "azurerm_subnet" "subnet" {
   name                 = "${var.vnet_name}_subnet0"
   resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [var.address_prefix_subnet]
+}
+
+data "azurerm_subnet" "subnet" {
+  name = "${var.vnet_name}_subnet0"
+  resource_group_name = var.rg_name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  depends_on = [
+    azurerm_subnet.subnet
+  ]
 }

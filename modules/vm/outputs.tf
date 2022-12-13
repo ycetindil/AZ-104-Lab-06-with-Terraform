@@ -1,7 +1,8 @@
-output "vm_id" {
-  value = azurerm_windows_virtual_machine.vm.id
+output "vm" {
+  value = data.azurerm_virtual_machine.vm
 }
 
-output "nic_id" {
-  value = azurerm_network_interface.nic.id
+output "nic" {
+  value = data.azurerm_network_interface.nic
 }
+
