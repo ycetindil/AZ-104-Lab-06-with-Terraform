@@ -15,8 +15,6 @@ In this lab, you will:
 + Task 5: Implement Azure Load Balancer
 + Task 6: Implement Azure Application Gateway
 
-## Estimated timing: 120 minutes
-
 ## Architecture diagram
 
 ![image](/media/lab06.png)
@@ -40,7 +38,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 1. Create the network watcher.
 
-1. use **Network Watcher** to view topology of the network.
+1. Use **Network Watcher** to view topology of the network.
 
 ### Task 2: Configure the hub and spoke network topology
 
