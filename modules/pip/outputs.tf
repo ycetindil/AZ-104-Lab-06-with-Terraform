@@ -1,4 +1,4 @@
-output "pip_id" {
-    value = azurerm_public_ip.pip.id
+output "pip" {
+    value = data.azurerm_public_ip.pip
   
 }
