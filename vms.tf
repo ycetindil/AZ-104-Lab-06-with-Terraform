@@ -20,9 +20,9 @@ module "vm0" {
   ip_forwarding  = true
 }
 
-module "vm1" {
-  source         = "./modules/vm"
-  vm_name        = "az104-06-vm1"
-  subnet_id      = module.subnet1.subnet.id
-  resource_group = module.rg1.rg.name
-}
+# module "vm1" {
+#   source         = "./modules/vm"
+#   vm_name        = "az104-06-vm1"
+#   subnet_id      = module.subnet1.subnet.id
+#   resource_group = module.rg1.rg.name
+# }

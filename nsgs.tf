@@ -14,10 +14,10 @@ resource "azurerm_network_interface_security_group_association" "vm0_assoc" {
   network_security_group_id = module.nsg_lb.nsg.id
 }
 
-resource "azurerm_network_interface_security_group_association" "vm1_assoc" {
-  network_interface_id      = module.vm1.nic.id
-  network_security_group_id = module.nsg_lb.nsg.id
-}
+# resource "azurerm_network_interface_security_group_association" "vm1_assoc" {
+#   network_interface_id      = module.vm1.nic.id
+#   network_security_group_id = module.nsg_lb.nsg.id
+# }
 
 resource "azurerm_network_interface_security_group_association" "vm2_assoc" {
   network_interface_id      = module.vm2.nic.id
