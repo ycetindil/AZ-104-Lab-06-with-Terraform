@@ -1,5 +1,5 @@
 module "nsg_lb" {
-  source   = "./modules/nsg"
+  source   = "./modules/nsgssh"
   rg_name  = module.rg1.rg.name
   nsg_name = "nsg_loadbalancer_vms"
 }

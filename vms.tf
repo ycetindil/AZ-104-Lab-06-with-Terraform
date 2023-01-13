@@ -13,12 +13,15 @@ module "vm3" {
 }
 
 module "vm0" {
-  source         = "./modules/vm"
+  source         = "./modules/vm0"
   vm_name        = "az104-06-vm0"
   subnet_id      = module.subnet0.subnet.id
   resource_group = module.rg1.rg.name
   ip_forwarding  = true
+  public_ip_address_id = module.pip4.pip.id
 }
+
+
 
 # module "vm1" {
 #   source         = "./modules/vm"
